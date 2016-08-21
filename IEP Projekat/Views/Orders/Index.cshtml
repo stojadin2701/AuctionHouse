@@ -1,0 +1,68 @@
+﻿@model PagedList.IPagedList<IEP_Projekat.Models.Order>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Get more Tokens", "GetTokens")
+</p>
+
+
+<table class="table">
+@if (Model.Count != 0)
+{
+    <tr>
+        <th>
+            @{
+                var itemNames = Model.First();
+            }
+            @Html.DisplayNameFor(model => itemNames.TokenNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => itemNames.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => itemNames.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => itemNames.OrderTime)
+        </th>
+        <th></th>
+    </tr>
+                }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TokenNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderTime)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+    <br />
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page }))
+
+
+

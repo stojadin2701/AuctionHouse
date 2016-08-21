@@ -1,0 +1,173 @@
+﻿@{
+    ViewBag.Title = "AuctionHouse";
+}
+@using IEP_Projekat.Models 
+@using System.Security.Claims;
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.Owin;
+@model PagedList.IPagedList<IEP_Projekat.Models.AuctionViewModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<script>
+    var aucIds = new Array();
+    function pad(str) {
+        return ("0" + str).slice(-2);
+    }
+    function hhmmss(secs) {
+        var minutes = Math.floor(secs / 60);
+        secs = secs % 60;
+        var hours = Math.floor(minutes / 60)
+        minutes = minutes % 60;
+        return pad(hours) + ":" + pad(minutes) + ":" + pad(secs);
+    }
+    @foreach(AuctionViewModel item in Model.Where(a => a.Duration>0)){
+        @:aucIds.push(@item.Id);
+    }
+    var ajax_call = function () {
+        $.ajax({
+            url: "/Auctions/GetTimeLeft",
+            datatype: "text",
+            type: "POST",
+            traditional: true,
+            data: { 'auctionIds' :aucIds},
+            success: function (retStr) {
+                if(retStr!=null){
+                    var idArr = retStr.split(';');
+                    for (var i = 0; i < idArr.length; i++) {
+                        var time_price_user = idArr[i].split(',');
+                        var timeLeft = time_price_user[0].split(' ');
+                        if (timeLeft[1] > 0 && timeLeft[1] <= 10)
+                            $("#time_" + timeLeft[0]).html('<span style="background-color:#f66">' + hhmmss(timeLeft[1]) + '</span>');
+                        else $("#time_" + timeLeft[0]).html(hhmmss(timeLeft[1]));
+                        if (timeLeft[1] == 0) {
+                            $("#bidButton_" + timeLeft[0]).html('');
+                            $("#thumb_" + timeLeft[0]).css({ "opacity":"0.4", "filter":"alpha(opacity=40)" });
+                        }
+                        $("#price_" + timeLeft[0]).html(time_price_user[1]);
+                        if (time_price_user.length == 3) $("#user_" + timeLeft[0]).html(time_price_user[2]);
+                    }
+                }
+            },
+            error: function () {
+                $("#time").html("ERROR");
+            }
+        });
+    }
+    setInterval(ajax_call, 1000);
+</script>
+
+<div class="jumbotron">
+    <center>
+        <h1>AuctionHouse</h1>
+        <p class="lead">Welcome to AuctionHouse!</p>
+    </center>
+</div>
+<br />
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.Label("Search by name")
+        @Html.TextBox("SearchString", ViewBag.CurrentName as string)
+        @Html.Label("Search by state")
+        <select name="stateList" selected="@ViewBag.CurrentState">
+            <option value=""></option>
+            <option value="OPEN">Open</option>
+            <option value="SOLD">Sold</option>
+            <option value="EXPIRED">Expired</option>
+        </select>
+        @Html.Label("Min price (Ŧ)")
+        <input type="number" id="minPrice" name="minPrice" min="0" data-bind="value:minPrice" step="1" value="@ViewBag.CurrentMin"/>
+        @Html.Label("Max price (Ŧ)")
+        <input type="number" id="maxPrice" name="maxPrice" min="0" data-bind="value:maxPrice" step="1" value="@ViewBag.CurrentMax"/>
+        <input type="submit" class="btn btn-primary" value="Search" style="padding-right:10px;" />
+    </div>       
+}
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3 col-md-3 col-lg-3" style="@((item.State == "OPEN")? "margin-bottom:20px;" : "margin-bottom:60px")">
+            <div class="thumbnail @((item.State == "OPEN")? String.Empty : "past")" id="thumb_@item.Id">
+                <img class="img-thumbnail" src="data:image;base64,@System.Convert.ToBase64String(item.ImageContent)" />
+                <!--<img max-width="320px" max-height="150px" src="data:image;base64,@System.Convert.ToBase64String(item.ImageContent)" />-->
+                <div class="caption">
+                    <center>
+                        <h4>
+                            <span style="margin-bottom:10px;">@item.Name<br /></span>
+                            Price: <span id="price_@item.Id">@Html.DisplayFor(modelItem => item.Price)</span> &#358;
+                        </h4>
+                            @switch (item.State)
+                            {
+                                case "OPEN":
+                                    @:Last bidder:
+                                    if (item.LastBidderUserName != null)
+                                    {
+                                        <span id="user_@item.Id">@item.LastBidderUserName</span>
+                                    }
+                                    else
+                                    {
+                                        <span id="user_@item.Id">No bids yet</span>
+                                    }
+                                    break;
+                                case "SOLD":
+                                    @:Sold to
+                                    if (item.LastBidderUserName != null)
+                                    {
+                                        <span id="user_@item.Id">@item.LastBidderUserName</span>
+                                    }
+                                    else
+                                    {
+                                        <span id="user_@item.Id">No bids yet</span>
+                                    }
+                                    break;
+                                case "EXPIRED":
+                                    @:Expired
+                                    break;
+                            }
+                    </center>
+                </div>
+                @{
+                                            TimeSpan time = TimeSpan.FromSeconds(item.Duration);
+                                        }
+                <center id="time_@item.Id">@Html.Raw(time.ToString(@"hh\:mm\:ss"))</center>
+                <br />
+                @if (Request.IsAuthenticated && item.State=="OPEN")
+                {
+                    using (Html.BeginForm("BidNow", "Bids", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="AuctionId" value="@item.Id">
+
+
+                        <input type="hidden" name="UserId" value="@User.Identity.GetUserId()">
+                        var uId = User.Identity.GetUserId();
+                        var user = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().Users.Where(usr => usr.Id == uId).First();
+                        if (user.TokenNum != 0)
+                        {
+                            <center id="bidButton_@item.Id"><input type="submit" class="btn btn-primary" value="Bid Now" /></center>
+                        }
+                        else
+                        {
+                            <center>
+                                You have no more tokens<br />
+                                @Html.ActionLink("Get Tokens", "GetTokens", "Orders")
+                            </center>
+                        }
+
+                    }
+                }
+                <span align="right">@Html.ActionLink("Details", "Details", "Auctions", new { Id = item.Id }, null)</span>
+            </div>
+            <center>
+
+
+            </center>
+        </div>
+        }
+        <br />
+        
+</div>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, currentName = ViewBag.CurrentName, currentState = ViewBag.CurrentState, currentMin = ViewBag.CurrentMin, currentMax = ViewBag.CurrentMax }))

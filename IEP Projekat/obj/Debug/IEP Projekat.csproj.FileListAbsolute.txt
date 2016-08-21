@@ -1,0 +1,77 @@
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\roslyn\csc.exe
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\roslyn\vbc.exe
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\roslyn\VBCSCompiler.exe
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\IEP Projekat.dll.config
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\IEP Projekat.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\IEP Projekat.pdb
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Antlr3.Runtime.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\EntityFramework.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\EntityFramework.SqlServer.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Newtonsoft.Json.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Owin.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\PagedList.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\PagedList.Mvc.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.Helpers.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.Mvc.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.Optimization.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.Razor.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.WebPages.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.WebPages.Razor.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\WebGrease.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Antlr3.Runtime.pdb
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\PagedList.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\PagedList.Mvc.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.Helpers.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.Mvc.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.Optimization.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.Razor.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.WebPages.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\System.Web.WebPages.Razor.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Newtonsoft.Json.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\EntityFramework.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\EntityFramework.SqlServer.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\obj\Debug\IEP_Projekat.Migrations.InitialCreate.resources
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\obj\Debug\IEP_Projekat.Migrations.FullName.resources
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\obj\Debug\IEP_Projekat.Migrations.TokenNum.resources
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\obj\Debug\IEP Projekat.csproj.GenerateResource.Cache
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\obj\Debug\IEP Projekat.dll
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\obj\Debug\IEP Projekat.pdb
+C:\Users\Nemanja\documents\visual studio 2015\Projects\IEP Projekat\IEP Projekat\obj\Debug\IEP Projekat.csprojResolveAssemblyReference.cache

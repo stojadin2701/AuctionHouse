@@ -1,0 +1,33 @@
+﻿@model List<IEP_Projekat.Models.Bid>
+@using System.Web;
+@using Microsoft.AspNet.Identity.Owin;
+
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                User
+            </th>
+            <th>
+                Bid time
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @{  var user = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().Users.Where(usr => usr.Id == item.UserId).First();
+                    string username = user.UserName;
+                }
+                @username
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BidTime)
+            </td>
+        </tr>
+        }
+
+    </table>
+                    }

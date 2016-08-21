@@ -1,0 +1,51 @@
+﻿@model IEP_Projekat.Models.AuctionViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="row">
+    <h4>Auction</h4>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <div class="thumbnail">
+                <img class="img-thumbnail" src="data:image;base64,@System.Convert.ToBase64String(Model.ImageContent)" />
+                <!--<img max-width="320px" max-height="150px" src="data:image;base64,@System.Convert.ToBase64String(Model.ImageContent)" />-->
+                <div class="caption">
+                    <center>
+                        <h4>
+                            <span style="margin-bottom:10px;">@Model.Name<br /></span>
+                            Price: @Html.DisplayFor(modelItem => Model.Price) &#358;
+                        </h4>
+
+                        @if (Model.LastBidderUserName != null)
+                        {
+                            @:Last bidder: @Model.LastBidderUserName
+                        }
+                        else
+                        {
+                            @:No bids yet
+                    }
+                    </center>
+                </div>
+                @{
+                    TimeSpan time = TimeSpan.FromSeconds(Model.Duration);
+                }
+                <center>@Html.Raw(time.ToString(@"hh\:mm\:ss"))</center>
+            </div>
+        </div>
+</div>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}

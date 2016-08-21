@@ -1,0 +1,150 @@
+﻿@model IEP_Projekat.Models.AuctionViewModel
+@using Microsoft.AspNet.Identity.Owin;
+@using IEP_Projekat.Models;
+@using System.Net;
+@using System.Web;
+@using System.Web.Mvc;
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    var aucIds = new Array();
+    function pad(str) {
+        return ("0" + str).slice(-2);
+    }
+    function hhmmss(secs) {
+        var minutes = Math.floor(secs / 60);
+        secs = secs % 60;
+        var hours = Math.floor(minutes / 60)
+        minutes = minutes % 60;
+        return pad(hours) + ":" + pad(minutes) + ":" + pad(secs);
+    }
+    aucIds.push(@Model.Id);
+    var ajax_call = function () {
+        $.ajax({
+            url: "/Auctions/GetTimeLeft",
+            datatype: "text",
+            type: "POST",
+            traditional: true,
+            data: { 'auctionIds' :aucIds},
+            success: function (retStr) {
+                if(retStr!=null){
+                    var idArr = retStr.split(';');
+                    for (var i = 0; i < idArr.length; i++) {
+                        var time_price_user = idArr[i].split(',');
+                        var timeLeft = time_price_user[0].split(' ');
+                        if (timeLeft[1] > 0 && timeLeft[1] <= 10)
+                            $("#time_" + timeLeft[0]).html('<span style="background-color:#f66">' + hhmmss(timeLeft[1]) + '</span>');
+                        else $("#time_" + timeLeft[0]).html(hhmmss(timeLeft[1]));
+                        if (timeLeft[1] == 0) {
+                            $("#bidButton_" + timeLeft[0]).html('');
+                            $("#thumb_" + timeLeft[0]).css({ "opacity":"0.4", "filter":"alpha(opacity=40)" });
+                        }
+                        $("#price_" + timeLeft[0]).html(time_price_user[1]);
+                        if (time_price_user.length == 3) {
+                            $("#user_" + timeLeft[0]).html(time_price_user[2]);
+                        }
+                    }
+                }
+            },
+            error: function () {
+                $("#time").html("ERROR");
+            }
+        });
+    }
+
+    var partial_ajax = function () {
+        $.ajax({
+            url: "/Auctions/RefreshBidderListPartial",
+            datatype: "text",
+            type: "POST",
+            data: { 'AuctionId': aucIds[0] },
+            success: function (returnData) {
+                $("#partialBidderList").html(returnData);
+            },
+            error: function () {
+                $("#partialBidderList").html("ERROR");
+            }
+        });
+    }
+    setInterval(ajax_call, 1000);
+    setInterval(partial_ajax, 5000);
+</script>
+
+<h2>Details</h2>
+
+<div class="row">
+    <h4>Auction</h4>
+    <div class="col-sm-3 col-md-3 col-lg-3">
+        <div class="thumbnail @((Model.State != "OPEN" || Model.State!="READY")? String.Empty : "past")" id="thumb_@Model.Id">
+            <img class="img-thumbnail" src="data:image;base64,@System.Convert.ToBase64String(Model.ImageContent)" />
+            <!--<img max-width="320px" max-height="150px" src="data:image;base64,@System.Convert.ToBase64String(Model.ImageContent)" />-->
+            <div class="caption">
+                <center>
+                    <h4>
+                        <span style="margin-bottom:10px;">@Model.Name<br /></span>
+                        Price: <span id="price_@Model.Id">@Html.DisplayFor(modelItem => Model.Price)</span> &#358;
+                    </h4>
+
+                    @switch (Model.State)
+                    {
+                        case "OPEN":
+                            @:Last bidder:
+                                    if (Model.LastBidderUserName != null)
+                            {
+                                <span id="user_@Model.Id">@Model.LastBidderUserName</span>
+                            }
+                            else
+                            {
+                                <span id="user_@Model.Id">No bids yet</span>
+                            }
+                            break;
+                        case "SOLD":
+                            @:Sold to
+                                    if (Model.LastBidderUserName != null)
+                            {
+                                <span id="user_@Model.Id">@Model.LastBidderUserName</span>
+                            }
+                            else
+                            {
+                                <span id="user_@Model.Id">No bids yet</span>
+                            }
+                            break;
+                        case "EXPIRED":
+                            @:Expired
+                        break;
+                    }
+                </center>
+            </div>
+            @{
+                TimeSpan time = TimeSpan.FromSeconds(Model.Duration);
+            }
+            <center id="time_@Model.Id">@Html.Raw(time.ToString(@"hh\:mm\:ss"))</center>
+            @if (Model.State == "READY")
+            {
+                <br />
+                <center>
+                    @Html.ActionLink("Open Auction", "Open", "Auctions", new { Id = Model.Id }, new { @class = "btn btn-success" })<br />
+                    @Html.ActionLink("Edit", "Edit", new { Id = Model.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { Id = Model.Id })
+                </center>
+            }
+        </div>
+            </div>
+</div>
+<p>
+    @if (this.User.IsInRole("Admin")) {
+        @Html.ActionLink("Back to List", "Index");
+    }
+</p>
+<hr />
+<h4>Last 10 bids for this auction</h4>
+
+<div id="partialBidderList">
+</div>
+
+
+
